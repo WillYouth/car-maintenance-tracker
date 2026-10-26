@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Smoke test: verifies GEMINI_API_KEY works with a real gemini-3.8-flash call.
+// Smoke test: verifies GEMINI_API_KEY works with a real Gemini call.
 // Run:  npm run gemini:smoke
 const { generateText, generateJson, MODEL } = require('../src/lib/gemini');
 

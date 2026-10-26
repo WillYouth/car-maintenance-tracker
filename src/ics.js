@@ -66,7 +66,7 @@ function buildIcs() {
 
   for (const v of serviceDue.all()) {
     events.push({
-      uid: `service-${v.id}@car-tracker`,
+      uid: `service-${v.id}@car-maintenance-tracker`,
       date: v.next_service_date,
       summary: `Service due: ${v.name}`,
       description: v.next_service_km ? `Due at ${v.next_service_km} km` : '',
@@ -74,7 +74,7 @@ function buildIcs() {
   }
   for (const r of flaggedRides.all()) {
     events.push({
-      uid: `ride-${r.id}@car-tracker`,
+      uid: `ride-${r.id}@car-maintenance-tracker`,
       date: r.started_at.slice(0, 10),
       summary: `Warning: ${r.name}`,
       description: 'Warning light or high engine temperature reported',
@@ -82,7 +82,7 @@ function buildIcs() {
   }
 
   const lines = [
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//car-tracker//EN', 'CALSCALE:GREGORIAN',
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//car-maintenance-tracker//EN', 'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH', 'X-WR-CALNAME:Car maintenance',
   ];
   for (const e of events) {
