@@ -1,0 +1,25 @@
+{
+  "name": "car-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared car maintenance tracker: odometer OCR, invoice OCR, alerts and calendar feed",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=20.6"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --env-file=.env src/server.js",
+    "user": "node scripts/cli.js",
+    "gemini:smoke": "node scripts/gemini-smoke.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.31.0",
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.7.0",
+    "dotenv": "^18.0.9",
+    "express": "^4.21.2",
+    "multer": "^2.0.0",
+    "nodemailer": "^6.9.16"
+  }
+}

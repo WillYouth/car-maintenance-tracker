@@ -1,0 +1,28 @@
+[Unit]
+Description=Car Maintenance Tracker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=carapp
+Group=carapp
+WorkingDirectory=/opt/car-tracker
+EnvironmentFile=/opt/car-tracker/.env
+ExecStart=/usr/bin/node src/server.js
+Restart=on-failure
+RestartSec=5
+
+# Low-end hardware guardrails
+MemoryMax=192M
+Nice=5
+
+# Hardening
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/opt/car-tracker/data
+
+[Install]
+WantedBy=multi-user.target

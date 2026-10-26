@@ -1,0 +1,8 @@
+node_modules/
+
+# Secrets: API keys live here and must never be committed
+.env
+.env.local
+.env.*.local
+
+data/
