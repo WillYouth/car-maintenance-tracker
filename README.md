@@ -74,6 +74,7 @@ sudo git clone https://github.com/WillYouth/car-maintenance-tracker.git /opt/car
 sudo chown -R carapp:carapp /opt/car-maintenance-tracker
 sudo chmod 755 /opt/car-maintenance-tracker     # Nginx (www-data) must be able to traverse this directory
 cd /opt/car-maintenance-tracker && sudo -u carapp npm ci --omit=dev
+sudo -u carapp mkdir -p data/uploads            # database and photo storage, owned by carapp
 ```
 
 `npm ci` installs `better-sqlite3`, which ships prebuilt binaries for Node 22 on x86_64 and arm64. If it reports a build error (for example, when it can't download the binary), install the build tools and run the same command again:
@@ -104,6 +105,8 @@ unset PASSWORD
 ```
 
 The password is read silently and never written to shell history.
+
+Run this command with `sudo -u carapp`, as shown. Running it as your login user fails with `EACCES: permission denied, mkdir '/opt/car-maintenance-tracker/data'`, because the directory belongs to `carapp`.
 
 ### 6. Run the app as a service
 
